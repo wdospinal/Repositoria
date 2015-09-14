@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'register' => 'users#new', :as => :register_path
   post 'register' => 'users#create'
   post 'login' => 'sessions#create'
-  get 'user/:id' => 'users#show', :as => :user
+  get 'users/:id' => 'users#show', :as => :user
   root 'sessions#new'
   resources :users
   resources :sessions
