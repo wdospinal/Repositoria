@@ -1,0 +1,8 @@
+<h1>Registro</h1>
+<%= form_for(@user) do |f| %>
+  Nombre: <%= f.text_field :name %><br />
+  Nick : <%= f.text_field :nickname %><br />
+  Clave : <%= f.password_field :password %><br />
+  Confirme clave : <%= f.password_field :password_confirmation %><br />
+  <%= f.submit %>
+<% end %>
