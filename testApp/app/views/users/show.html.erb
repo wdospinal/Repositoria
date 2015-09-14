@@ -1,4 +1,12 @@
 <%= @user.name %>
 <% if logged_in? %>
-<p>Holi</p>
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li>
+      <%=h friendship.friend.nickname %>
+    </li>
+  <% end %>
+</ul>
+<p>New friend? <%= link_to "Add now!", friendships_path %></p>
 <% end %>
