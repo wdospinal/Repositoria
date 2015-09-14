@@ -6,12 +6,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
-      #flash[:success] = "Welcome to the Sample App!"
+      redirect_to(login_path)
     else
       render 'new'
     end
   end
   
+  def show
+    @user = User.find(params[:id])
+  end
+     
   private
     def user_params
       params.require(:user).permit(:name, :nickname, :password,
