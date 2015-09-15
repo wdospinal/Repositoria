@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   get 'register' => 'users#new', :as => :register_path
   post 'register' => 'users#create'
   post 'login' => 'sessions#create'
-  get 'user/:id' => 'users#show', :as => :user
+  get 'users/:id' => 'users#show', :as => :user
+  get 'friendships' => 'friendships#new', :as => :friendships_path
+  post 'friendships' => 'friendships#create'
   root 'sessions#new'
   resources :users
   resources :sessions
+  resources :friendships
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

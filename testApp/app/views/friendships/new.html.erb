@@ -1,0 +1,8 @@
+<h1>Friendships</h1>
+
+<%= form_tag("/friendships", method: "post") do %>
+  <%= label_tag(:nickname, "Nickname:") %>
+  <%= text_field_tag(:nickname) %>
+  <%= submit_tag("Add") %>
+<% end %>
+
