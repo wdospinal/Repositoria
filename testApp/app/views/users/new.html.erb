@@ -13,7 +13,7 @@
 				<% end %>
 			</ul>
 		<% end %>
-		
+		<div class="container-fluid">
 		Name: <%= f.text_field :name %>
 		<br />
 		Nick : <%= f.text_field :nickname %>
@@ -22,6 +22,7 @@
 		<br />
 		Password Confirmation : <%= f.password_field :password_confirmation %>
 		<br />
+		</div>
 		<%= f.submit %>
 	<% end %>
 <% else %>
