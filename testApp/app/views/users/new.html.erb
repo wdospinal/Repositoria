@@ -1,5 +1,9 @@
 <% if !logged_in? %>
-	<h1>Register</h1>
+	<div class = "panel panel-primary">	
+	<div class="panel-heading">
+  	<h4>Register</h4>
+ 	</div>
+	<div class="panel-body">
 	<%= form_for(@user) do |f| %>
 
 		<% if @user.errors.any? %>
@@ -14,19 +18,34 @@
 			</ul>
 		<% end %>
 		<div class="container-fluid">
-		Name: <%= f.text_field :name %>
-		<br />
-		Nick : <%= f.text_field :nickname %>
-		<br />
-		Password : <%= f.password_field :password %>
-		<br />
-		Password Confirmation : <%= f.password_field :password_confirmation %>
-		<br />
+		
+		<label for="inputName" class="col-sm-2 control-label">Name:</label> 
+			<div class="col-sm-10">
+				<%= f.text_field :name %>
+			</div>
+			
+		<label for="inputNick" class="col-sm-2 control-label">Nick:</label> 
+			<div class="col-sm-10">		 
+				<%= f.text_field :nickname %>
+			</div>
+		<label for="inputPasword" class="col-sm-2 control-label">Password:</label> 
+			<div class="col-sm-10">		 
+				<%= f.password_field :password %>
+				<img src="http://www.paulafernandez.com/img/candado_18.gif" class="img-thumbnail">
+			</div>
+		<label for="inputPassword_confirmation" class="col-sm-2 control-label">Password Confirmation:</label> 
+			<div class="col-sm-10">
+				<%= f.password_field :password_confirmation %>
+				<img src="http://www.paulafernandez.com/img/candado_18.gif" class="img-thumbnail">
+				
+			</div>
 		</div>
-		<%= f.submit %>
+		<%= submit_tag "Log In", class: "btn btn-primary" %>
 	<% end %>
 <% else %>
 	<script type="text/javascript">
             window.location="<%= users_path + '/' + current_user.id.to_s %>";
     </script>
 <% end %>
+</div>
+</div>
