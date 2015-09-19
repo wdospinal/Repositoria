@@ -12,12 +12,12 @@ class FriendshipsController < ApplicationController
       if !friend.nil?        
         @friendship = current_user.friendships.build(:friend_id => friend.id)
         if @friendship.save
-          # Notificación agregaste amigo.
+          # Notificaciï¿½n agregaste amigo.
           msg = { :status => "ok", :message => "Friend added successfully!"}
           format.json { render json: msg}
           format.html { redirect_to current_user }
         else
-          # Notificación No se pudo agregar.
+          # Notificaciï¿½n No se pudo agregar.
           msg = { :status => "error", :message => "Server error"}
           format.json { render json: msg}
           format.html { redirect_to current_user }
