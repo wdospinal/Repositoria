@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if user && user.authenticate(params[:password])
         log_in(user)
-        format.html { redirect_to user , notice: ':))))'}
+        format.html { redirect_to user}
         msg = { :status => "ok", :message => "Login success!"}
         format.json { render json: msg}
       else

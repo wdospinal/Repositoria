@@ -1,51 +1,57 @@
-<% if !logged_in? %>
-	<div class = "panel panel-primary">	
-	<div class="panel-heading">
-  	<h4>Register</h4>
- 	</div>
-	<div class="panel-body">
-	<%= form_for(@user) do |f| %>
+<% if !logged_in? %> <h1>Register</h1>
+<div class="form-horizontal">
+	<%= form_for @user do |f| %>
 
-		<% if @user.errors.any? %>
-			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this register:</h2>
-		
-			<ul>
-				<% @user.errors.full_messages.each do |message| %>
-				<li>
-					<%= message %>
-				</li>
-				<% end %>
-			</ul>
-		<% end %>
-		<div class="container-fluid">
-		
-		<label for="inputName" class="col-sm-2 control-label">Name:</label> 
-			<div class="col-sm-10">
-				<%= f.text_field :name %>
-			</div>
-			
-		<label for="inputNick" class="col-sm-2 control-label">Nick:</label> 
-			<div class="col-sm-10">		 
-				<%= f.text_field :nickname %>
-			</div>
-		<label for="inputPasword" class="col-sm-2 control-label">Password:</label> 
-			<div class="col-sm-10">		 
-				<%= f.password_field :password %>
-				<img src="http://www.paulafernandez.com/img/candado_18.gif" class="img-thumbnail">
-			</div>
-		<label for="inputPassword_confirmation" class="col-sm-2 control-label">Password Confirmation:</label> 
-			<div class="col-sm-10">
-				<%= f.password_field :password_confirmation %>
-				<img src="http://www.paulafernandez.com/img/candado_18.gif" class="img-thumbnail">
-				
+	<% if @user.errors.any? %>
+
+	<div class="alert alert-danger" role="alert">
+		<h3><%= pluralize(@user.errors.count, "error") %> prohibited this register:</h3>
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+			<li>
+				<%= message %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="row">
+
+		<div class="col-sm-10">
+			<div class="form-group col-xs-3">
+				<label for="inputName" >Name:</label>
+				<%= f.text_field :name , :class => "form-control"%>
 			</div>
 		</div>
-		<%= submit_tag "Log In", class: "btn btn-primary" %>
-	<% end %>
-<% else %>
-	<script type="text/javascript">
-            window.location="<%= users_path + '/' + current_user.id.to_s %>";
-    </script>
-<% end %>
-</div>
-</div>
+
+		<div class="col-sm-10 col-xs-3">
+			<div class="form-group col-xs-3">
+				<label for="inputNick" >Nick:</label>
+				<%= f.text_field :nickname, :class => "form-control" %>
+			</div>
+		</div>
+
+		<div class="col-sm-10 col-xs-3">
+			<div class="form-group col-xs-3">
+				<label for="inputPasword">Password:</label>
+				<%= f.password_field :password, :class => "form-control"%>
+			</div>
+		</div>
+
+		<div class="col-sm-10 col-xs-3">
+			<div class="form-group col-xs-3">
+				<label for="inputPassword_confirmation" ">Password Confirmation:</label>
+				<%= f.password_field :password_confirmation, :class => "form-control" %>
+				</div>
+				</div>
+				</div>
+				<%= submit_tag "Sign up", class: "btn btn-primary" %>
+				</div>
+				<% end %>
+				<% else %>
+				<script type="text/javascript">
+										window.location="<%= users_path + '/' + current_user.id.to_s %>
+						";
+				</script>
+				<% end %>
+
