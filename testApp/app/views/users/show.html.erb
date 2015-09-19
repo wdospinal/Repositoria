@@ -1,25 +1,37 @@
-<h2><%= @user.name %></h2>
-<% if logged_in? %>
-	<h3>Friends</h3>
-	<ul>
-	  <% for friendship in @user.friendships %>
-	    <li>
-	      <%=h friendship.friend.nickname %>
-	    </li>
-	  <% end %>
-	</ul>
-	<p>New friend? <%= link_to "Add now!", friendships_path %></p>
-	<p><%= link_to "Logout? ", logout_path %></p>
-	<article class = "bottom-space">
-		<div class="row center-xs">
-			<div class="col"
-			</div>
-		</div>
-	</articcle<
-	<%image_tag user.avatar%>
-<% else %>
-	<p>You are not logged in <%= link_to "Login now!", login_path %></p>
-<% end %>
 
+<div class = "panel panel-primary">
+	<div class="panel-heading">
+		<h4><%= @user.name %></h4>
+	</div>
+	<div class="panel-body">
+		<% if logged_in? %>
+		<h3>Friends</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th data-field="id">Name</th>
+					<th data-field="name">Nickname</th>
+				</tr>
+			</thead>
+			<% for friendship in @user.friendships %>
+			<tr>
+				<td> <%= h friendship.friend.name %> </td>
+				<td> <%= h friendship.friend.nickname %> </td>
+			</tr>
+			<% end %>
 
+		</table>
+		<p>
+			New friend? <%= link_to "Add now!", friendships_path %>
+		</p>
+		<p>
+			<%= link_to "Logout? ", logout_path %>
+		</p>
+		<% else %>
+		<p>
+			You are not logged in <%= link_to "Login now!", login_path %>
+		</p>
+		<% end %>
+	</div>
+</div>
 
