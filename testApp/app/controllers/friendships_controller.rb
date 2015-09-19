@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
       else
         msg = { :status => "error", :message => "Friend not found!"}
         format.json { render json: msg}
-        format.html { redirect_to current_user }
+        format.html { redirect_to current_user, notice: 'Friend not found!'}
       end
     end
     
