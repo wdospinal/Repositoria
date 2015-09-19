@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   get 'users/:id' => 'users#show', :as => :user
   get 'friendships' => 'friendships#new', :as => :friendships_path
+  get 'friends' => 'friendships#show', :as => :friends_path
+  get 'logout' => 'sessions#destroy'
   post 'friendships' => 'friendships#create'
   root 'sessions#new'
   resources :users

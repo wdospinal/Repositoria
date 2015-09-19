@@ -1,14 +1,20 @@
 class UsersController < ApplicationController
+  
+  skip_before_action :verify_authenticity_token
+  
   def new
     @user = User.new
   end
   
   def create
-    @user = User.new(user_params)    # Not the final implementation!
-    if @user.save
-      redirect_to(login_path)
-    else
-      render 'new'
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to login_path }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors }
+      end
     end
   end
   
