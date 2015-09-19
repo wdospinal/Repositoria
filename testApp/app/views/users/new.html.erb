@@ -1,8 +1,31 @@
-<h1>Register</h1>
-<%= form_for(@user) do |f| %>
-  Nombre: <%= f.text_field :name %><br />
-  Nick : <%= f.text_field :nickname %><br />
-  Clave : <%= f.password_field :password %><br />
-  Confirme clave : <%= f.password_field :password_confirmation %><br />
-  <%= f.submit %>
+<% if !logged_in? %>
+	<h1>Register</h1>
+	<%= form_for(@user) do |f| %>
+
+		<% if @user.errors.any? %>
+			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this register:</h2>
+		
+			<ul>
+				<% @user.errors.full_messages.each do |message| %>
+				<li>
+					<%= message %>
+				</li>
+				<% end %>
+			</ul>
+		<% end %>
+		
+		Name: <%= f.text_field :name %>
+		<br />
+		Nick : <%= f.text_field :nickname %>
+		<br />
+		Password : <%= f.password_field :password %>
+		<br />
+		Password Confirmation : <%= f.password_field :password_confirmation %>
+		<br />
+		<%= f.submit %>
+	<% end %>
+<% else %>
+	<script type="text/javascript">
+            window.location="<%= users_path + '/' + current_user.id.to_s %>";
+    </script>
 <% end %>
