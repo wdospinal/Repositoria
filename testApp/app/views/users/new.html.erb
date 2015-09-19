@@ -1,9 +1,7 @@
 <% if !logged_in? %>
-	<div class = "panel panel-primary">	
 	<div class="panel-heading">
   	<h4>Register</h4>
  	</div>
-	<div class="panel-body">
 	<%= form_for(@user) do |f| %>
 
 		<% if @user.errors.any? %>
